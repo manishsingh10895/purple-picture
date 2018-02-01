@@ -4,7 +4,6 @@ services:
   - docker
 
 node_js: 
-  - "iojs"
   - "9"
 
 sudo: enabled
@@ -20,7 +19,7 @@ env:
 
 script:
   - cd $TEST_DIR && npm install && npm test
-  
+
 
 cache:
   directories:
