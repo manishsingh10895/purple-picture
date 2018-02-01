@@ -1,0 +1,29 @@
+language: node_js
+
+services: 
+  - docker
+
+node_js: 
+  - "iojs"
+  - "9"
+
+sudo: enabled
+
+os: ubuntu
+
+before_install: npm install -g mocha
+
+
+env:
+  - TEST_DIR=angular-client
+  - TEST_DIR=express-server
+
+script:
+  - cd $TEST_DIR && npm install && npm test
+  
+
+cache:
+  directories:
+    - "angular-client/node_modules"
+    - "express-server/node_modules"
+

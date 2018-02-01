@@ -11,14 +11,13 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Tempalte';
+  title = 'Template';
 
   constructor(private _http: Http) {
     this._http.get(APIURL + '/hello')
       .map((value) => value.json())
       .subscribe((value) => {
-        this.title = value;
+        this.title = value.message;
       });
-      
-  }
+    }   
 }

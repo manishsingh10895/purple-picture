@@ -3,8 +3,9 @@ const
     config = require('./config'),
     cookieSession = require('cookie-session'),
     passport = require('passport'),
+    cors = require('cors'),
     passportConfig = require('./services/passport'),
-    port = process.env.PORT || 5000,
+    port = process.env.PORT || 3000,
     mongoose = require('mongoose'),
     app = express();
     
@@ -13,6 +14,8 @@ app.use(cookieSession({
     secret: 'seomthing',
     keys: [config.auth.COOKIE_KEY]
 }));
+
+app.use(cors());
 
 app.use(passport.initialize());
 
@@ -30,7 +33,7 @@ require('./services/passport');
 
 //Routes
 require('./routes/auth.routes')(app);
-
+require('./routes/task.routes')(app);
 
 app.get('/hello', (req, res) => {
     res.json({ message: "Hello" });
