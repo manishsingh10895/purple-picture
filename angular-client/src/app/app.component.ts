@@ -13,11 +13,7 @@ import 'rxjs/add/operator/map';
 export class AppComponent {
   title = 'Template';
 
-  constructor(private _http: Http) {
-    this._http.get(APIURL + '/hello')
-      .map((value) => value.json())
-      .subscribe((value) => {
-        this.title = value.message;
-      });
-    }   
+  constructor() {
+      this.title =  'Template';
+  }   
 }
